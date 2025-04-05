@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { HiShoppingCart, HiCurrencyDollar, HiUserAdd } from "react-icons/hi";
+import {
+  HiShoppingCart,
+  HiCurrencyDollar,
+  HiUserAdd,
+  HiDownload,
+  HiUpload,
+  HiChevronLeft,
+  HiChevronRight,
+} from "react-icons/hi";
+
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import { ProgressSpinner } from "primereact/progressspinner";
+import { Message } from "primereact/message";
+import Overview from "../components/Overview";
 
 const DashboardContainer = styled.div`
   padding: 1rem;
@@ -12,102 +26,11 @@ const Title = styled.h1`
   margin-bottom: 1.5rem;
 `;
 
-const OverviewSection = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-`;
-
-const OverviewCard = styled.div`
-  background: white;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  min-height: 160px;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: ${(props) => props.accentColor || "#ff4081"};
-  }
-`;
-
-const CardHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const CardTitle = styled.h3`
-  font-size: 0.875rem;
-  color: #666;
-  font-weight: 500;
-  margin: 0;
-`;
-
-const IconWrapper = styled.div`
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 0.75rem;
-  background: ${(props) => props.background || "#ffe5ec"};
-  color: ${(props) => props.color || "#ff4081"};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-`;
-
-const Value = styled.div`
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: #333;
-`;
-
-const Growth = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-`;
-
-const GrowthValue = styled.span`
-  color: ${(props) => (props.isPositive ? "#22c55e" : "#ef4444")};
-  font-weight: 500;
-`;
-
-const GrowthLabel = styled.span`
-  color: #666;
-`;
-
-const DetailedReportSection = styled.div`
-  background: white;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-`;
-
 const ReportHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
-`;
-
-const ReportTitle = styled.h2`
-  font-size: 1.25rem;
-  color: #333;
-  margin: 0;
 `;
 
 const ButtonGroup = styled.div`
@@ -125,33 +48,18 @@ const Button = styled.button`
   align-items: center;
   gap: 0.5rem;
   border: 1px solid #e5e7eb;
-  background: ${(props) => (props.primary ? "#ff4081" : "white")};
-  color: ${(props) => (props.primary ? "white" : "#333")};
+  background: white;
+  color: ${(props) => props.color || "#ff4081"};
+  transition: all 0.2s;
 
   &:hover {
-    opacity: 0.9;
+    background: ${(props) => props.hoverBg || "#fff1f6"};
   }
-`;
 
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-`;
-
-const Th = styled.th`
-  text-align: left;
-  padding: 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #666;
-  border-bottom: 1px solid #e5e7eb;
-`;
-
-const Td = styled.td`
-  padding: 1rem;
-  font-size: 0.875rem;
-  color: #333;
-  border-bottom: 1px solid #e5e7eb;
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 `;
 
 const CustomerCell = styled.div`
@@ -198,42 +106,152 @@ const StatusBadge = styled.span`
   }};
 `;
 
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+`;
+
+const ErrorContainer = styled.div`
+  margin: 1rem 0;
+`;
+const PaginatorLeft = styled.div`
+  text-align: left;
+  margin-left: 0;
+`;
+
 const Dashboard = () => {
+  const [customers, setCustomers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchCustomers();
+  }, []);
+
+  const fetchCustomers = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await fetch("http://localhost:3000/customers");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setCustomers(data);
+    } catch (error) {
+      console.error("Error fetching customers:", error);
+      setError("Không thể tải dữ liệu. Vui lòng thử lại sau.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const statusBodyTemplate = (rowData) => {
+    return <StatusBadge status={rowData.status}>{rowData.status}</StatusBadge>;
+  };
+
+  const customerBodyTemplate = (rowData) => {
+    return (
+      <CustomerCell>
+        <Avatar src={rowData.avatar} alt={rowData.customerName} />
+        {rowData.customerName}
+      </CustomerCell>
+    );
+  };
+
+  const paginatorLeft = (
+    <PaginatorLeft>{customers.length} kết quả</PaginatorLeft>
+  );
+
+  const paginatorTemplate = {
+    layout:
+      "FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport",
+    CurrentPageReport: (options) => {
+      return paginatorLeft;
+    },
+  };
+
+  if (loading) {
+    return (
+      <LoadingContainer>
+        <ProgressSpinner />
+      </LoadingContainer>
+    );
+  }
+
   return (
     <DashboardContainer>
-      <Title>Overview</Title>
-      <OverviewSection>
-        <OverviewCard accentColor="#ff4081" />
-        <OverviewCard accentColor="#0ea5e9" />
-        <OverviewCard accentColor="#6366f1" />
-      </OverviewSection>
+      <Overview />
 
-      <DetailedReportSection>
-        <ReportHeader>
-          <ReportTitle>Detailed Report</ReportTitle>
-          <ButtonGroup>
-            <Button>Import</Button>
-            <Button primary>Export</Button>
-          </ButtonGroup>
-        </ReportHeader>
+      <ReportHeader>
+        <Title>Detailed report</Title>
+        <ButtonGroup>
+          <Button color="#ff4081" hoverBg="#fff1f6">
+            <HiUpload />
+            Import
+          </Button>
+          <Button color="#0ea5e9" hoverBg="#f0f9ff">
+            <HiDownload />
+            Export
+          </Button>
+        </ButtonGroup>
+      </ReportHeader>
 
-        <Table>
-          <thead>
-            <tr>
-              <Th>
-                <input type="checkbox" />
-              </Th>
-              <Th>CUSTOMER NAME</Th>
-              <Th>COMPANY</Th>
-              <Th>ORDER VALUE</Th>
-              <Th>ORDER DATE</Th>
-              <Th>STATUS</Th>
-              <Th></Th>
-            </tr>
-          </thead>
-          <tbody>{/* Data rows will be mapped here */}</tbody>
-        </Table>
-      </DetailedReportSection>
+      {error && (
+        <ErrorContainer>
+          <Message severity="error" text={error} />
+        </ErrorContainer>
+      )}
+
+      <DataTable
+        value={customers}
+        paginator
+        rows={5}
+        paginatorTemplate={paginatorTemplate}
+        tableStyle={{ minWidth: "50rem" }}
+        emptyMessage="Không có dữ liệu"
+        className="p-datatable-customers"
+      >
+        <Column
+          selectionMode="multiple"
+          headerStyle={{ width: "3rem" }}
+        ></Column>
+        <Column
+          field="customerName"
+          header="CUSTOMER NAME"
+          body={customerBodyTemplate}
+          sortable
+          style={{ minWidth: "14rem" }}
+        />
+        <Column
+          field="company"
+          header="COMPANY"
+          sortable
+          style={{ minWidth: "14rem" }}
+        />
+        <Column
+          field="orderValue"
+          header="ORDER VALUE"
+          sortable
+          style={{ minWidth: "8rem" }}
+        />
+        <Column
+          field="orderDate"
+          header="ORDER DATE"
+          sortable
+          style={{ minWidth: "8rem" }}
+        />
+        <Column
+          field="status"
+          header="STATUS"
+          body={statusBodyTemplate}
+          sortable
+          style={{ minWidth: "8rem" }}
+        />
+        <Column headerStyle={{ width: "5rem" }} />
+      </DataTable>
     </DashboardContainer>
   );
 };

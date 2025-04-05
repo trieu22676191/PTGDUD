@@ -12,6 +12,11 @@ import Teams from "./pages/Teams";
 import Analytics from "./pages/Analytics";
 import Messages from "./pages/Messages";
 import Integrations from "./pages/Integrations";
+
+// Import PrimeReact styles
+import "primereact/resources/themes/lara-light-indigo/theme.css"; // theme
+import "primereact/resources/primereact.min.css"; // core css
+import "primeicons/primeicons.css"; // icons
 import "./App.css";
 
 function App() {
