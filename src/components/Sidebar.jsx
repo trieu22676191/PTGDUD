@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const SidebarContainer = styled.div`
   width: 100%;
@@ -18,7 +18,7 @@ const Logo = styled.div`
   }
 `;
 
-const MenuItem = styled(Link)`
+const MenuItem = styled(NavLink)`
   display: flex;
   align-items: center;
   padding: 0.875rem 1.25rem;
@@ -26,11 +26,13 @@ const MenuItem = styled(Link)`
   color: #666;
   font-size: 1rem;
   transition: all 0.3s ease;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  margin: 0.25rem 0.75rem;
 
-  &:hover,
-  &.active {
-    background-color: #ff4081;
-    color: white;
+  &:hover {
+    border-color: #ff4081;
+    color: #ff4081;
   }
 
   img {
@@ -40,8 +42,8 @@ const MenuItem = styled(Link)`
   }
 
   &.active {
-    background-color: #ff4081;
-    color: white;
+    border-color: #ff4081;
+    color: #ff4081;
     font-weight: 500;
   }
 `;
@@ -53,7 +55,7 @@ const Sidebar = () => {
         <img src="/src/img/logo.png" alt="Logo" />
       </Logo>
 
-      <MenuItem to="/dashboard" className="active">
+      <MenuItem to="/dashboard">
         <img src="/src/img/dashboard.png" alt="Dashboard icon" />
         Dashboard
       </MenuItem>

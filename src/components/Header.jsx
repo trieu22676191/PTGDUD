@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -94,9 +95,17 @@ const Avatar = styled.div`
 `;
 
 const Header = () => {
+  const location = useLocation();
+
+  const getPageTitle = () => {
+    const path = location.pathname.substring(1); // Remove the leading slash
+    if (!path) return "Dashboard";
+    return path.charAt(0).toUpperCase() + path.slice(1);
+  };
+
   return (
     <HeaderContainer>
-      <Title>Dashboard</Title>
+      <Title>{getPageTitle()}</Title>
 
       <SearchContainer>
         <img src="/src/img/search.png" alt="Search icon" />
