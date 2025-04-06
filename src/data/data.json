@@ -269,6 +269,15 @@
             "orderDate": "24/07/2023",
             "status": "new",
             "avatar": "/src/img/avt6.png"
+          },
+          {
+            "id": 31,
+            "customerName": "Garen Darius",
+            "company": "AutoNet",
+            "orderValue": "$412",
+            "orderDate": "15/07/2023",
+            "status": "new",
+            "avatar": "/src/img/avt2.png"
           }
     ]
   }

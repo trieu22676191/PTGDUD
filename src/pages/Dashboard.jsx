@@ -18,6 +18,25 @@ import Overview from "../components/Overview";
 
 const DashboardContainer = styled.div`
   padding: 1rem;
+
+  .p-datatable {
+    .p-paginator {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      border: none;
+      padding: 1rem 0;
+      position: relative;
+
+      &::before {
+        content: "${(props) => props.resultCount} results";
+        position: absolute;
+        left: 0;
+        font-size: 0.875rem;
+        color: #6b7280;
+      }
+    }
+  }
 `;
 
 const Title = styled.h1`
@@ -162,7 +181,7 @@ const Dashboard = () => {
   };
 
   const paginatorLeft = (
-    <PaginatorLeft>{customers.length} kết quả</PaginatorLeft>
+    <PaginatorLeft>{customers.length} results</PaginatorLeft>
   );
 
   const paginatorTemplate = {
@@ -182,7 +201,7 @@ const Dashboard = () => {
   }
 
   return (
-    <DashboardContainer>
+    <DashboardContainer resultCount={customers.length}>
       <Overview />
 
       <ReportHeader>
@@ -209,7 +228,7 @@ const Dashboard = () => {
         value={customers}
         paginator
         rows={5}
-        paginatorTemplate={paginatorTemplate}
+        paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
         tableStyle={{ minWidth: "50rem" }}
         emptyMessage="Không có dữ liệu"
         className="p-datatable-customers"

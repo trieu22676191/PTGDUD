@@ -48,6 +48,44 @@ const MenuItem = styled(NavLink)`
   }
 `;
 
+const PromotionCard = styled.div`
+  margin: auto 0.75rem 1rem;
+  padding: 1rem;
+  background-color: #f8fafc;
+  border-radius: 0.75rem;
+  text-align: center;
+`;
+
+const PromotionImage = styled.img`
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+`;
+
+const PromotionText = styled.div`
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #333;
+  margin: 0.5rem 0;
+`;
+
+const TryNowButton = styled.button`
+  width: 100%;
+  padding: 0.5rem;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  color: #666;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #ff4081;
+    color: #ff4081;
+  }
+`;
+
 const Sidebar = () => {
   return (
     <SidebarContainer>
@@ -84,6 +122,12 @@ const Sidebar = () => {
         <img src="/src/img/code.png" alt="Integrations icon" />
         Integrations
       </MenuItem>
+
+      <PromotionCard>
+        <PromotionImage src="/src/img/Group.png" alt="V2.0 promotion" />
+        <PromotionText>v2.0 is available</PromotionText>
+        <TryNowButton>Try now</TryNowButton>
+      </PromotionCard>
     </SidebarContainer>
   );
 };

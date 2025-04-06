@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { HiShoppingCart, HiCurrencyDollar, HiUserAdd } from "react-icons/hi";
 
 const OverviewSection = styled.div`
   display: grid;
@@ -47,12 +46,11 @@ const IconWrapper = styled.div`
   height: 2.5rem;
   border-radius: 0.75rem;
   background: ${(props) => props.background || "#ffe5ec"};
-  color: ${(props) => props.color || "#ff4081"};
   display: flex;
   align-items: center;
   justify-content: center;
 
-  svg {
+  img {
     width: 1.25rem;
     height: 1.25rem;
   }
@@ -88,6 +86,58 @@ const Title = styled.h1`
 `;
 
 const Overview = () => {
+  const [stats, setStats] = useState({
+    turnover: 0,
+    profit: 0,
+    customers: 0,
+  });
+
+  useEffect(() => {
+    fetchCustomers();
+  }, []);
+
+  const fetchCustomers = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/customers");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+
+      // Tính tổng giá trị đơn hàng (turnover)
+      const totalTurnover = data.reduce(
+        (sum, customer) =>
+          sum + parseFloat(customer.orderValue.replace("$", "")),
+        0
+      );
+
+      // Tính lợi nhuận với thuế 10%
+      const totalProfit = totalTurnover * 0.1;
+      const profit = totalTurnover - totalProfit;
+
+      // Đếm số lượng khách hàng
+      const customerCount = data.length;
+
+      setStats({
+        turnover: totalTurnover,
+        profit: profit,
+        customers: customerCount,
+      });
+    } catch (error) {
+      console.error("Error fetching customers:", error);
+    }
+  };
+
+  // Format số thành định dạng tiền tệ
+  const formatCurrency = (value) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(value);
+  };
+
   return (
     <>
       <Title>Overview</Title>
@@ -96,11 +146,11 @@ const Overview = () => {
         <OverviewCard accentColor="#ff4081">
           <CardHeader>
             <CardTitle>Turnover</CardTitle>
-            <IconWrapper background="#ffe5ec" color="#ff4081">
-              <HiShoppingCart />
+            <IconWrapper background="#ffe5ec">
+              <img src="/src/img/cart.png" alt="Cart icon" />
             </IconWrapper>
           </CardHeader>
-          <Value>$92,405</Value>
+          <Value>{formatCurrency(stats.turnover)}</Value>
           <Growth>
             <GrowthValue isPositive>↑ 5.39%</GrowthValue>
             <GrowthLabel>period of change</GrowthLabel>
@@ -111,11 +161,11 @@ const Overview = () => {
         <OverviewCard accentColor="#0ea5e9">
           <CardHeader>
             <CardTitle>Profit</CardTitle>
-            <IconWrapper background="#e0f2fe" color="#0ea5e9">
-              <HiCurrencyDollar />
+            <IconWrapper background="#e0f2fe">
+              <img src="/src/img/dollar.png" alt="Dollar icon" />
             </IconWrapper>
           </CardHeader>
-          <Value>$32,218</Value>
+          <Value>{formatCurrency(stats.profit)}</Value>
           <Growth>
             <GrowthValue isPositive>↑ 5.39%</GrowthValue>
             <GrowthLabel>period of change</GrowthLabel>
@@ -126,11 +176,11 @@ const Overview = () => {
         <OverviewCard accentColor="#0ea5e9">
           <CardHeader>
             <CardTitle>New customer</CardTitle>
-            <IconWrapper background="#e0f2fe" color="#0ea5e9">
-              <HiUserAdd />
+            <IconWrapper background="#e0f2fe">
+              <img src="/src/img/user.png" alt="User icon" />
             </IconWrapper>
           </CardHeader>
-          <Value>298</Value>
+          <Value>{stats.customers}</Value>
           <Growth>
             <GrowthValue isPositive>↑ 6.84%</GrowthValue>
             <GrowthLabel>period of change</GrowthLabel>
