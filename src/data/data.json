@@ -1,284 +1,292 @@
 {
-    "customers": [
-          {
-            "id": 1,
-            "customerName": "Elizabeth Lee",
-            "company": "AvatarSystems",
-            "orderValue": "$359",
-            "orderDate": "10/07/2023",
-            "status": "new",
-            "avatar": "/src/img/avt.png"
-          },
-          {
-            "id": 2,
-            "customerName": "Carlos Garcia",
-            "company": "SmoozeShift",
-            "orderValue": "$747",
-            "orderDate": "24/07/2023",
-            "status": "new",
-            "avatar": "/src/img/avt6.png"
-          },
-          {
-            "id": 3,
-            "customerName": "Elizabeth Bailey",
-            "company": "Prime Time Telecom",
-            "orderValue": "$564",
-            "orderDate": "08/08/2023",
-            "status": "in-progress",
-            "avatar": "/src/img/avt3.png"
-          },
-          {
-            "id": 4,
-            "customerName": "Ryan Brown",
-            "company": "OmniTech Corporation",
-            "orderValue": "$541",
-            "orderDate": "31/08/2023",
-            "status": "in-progress",
-            "avatar": "/src/img/avt2.png"
-          },
-          {
-            "id": 5,
-            "customerName": "Ryan Young",
-            "company": "DataStream Inc.",
-            "orderValue": "$769",
-            "orderDate": "01/05/2023",
-            "status": "completed",
-            "avatar": "/src/img/avt1.png"
-          },
-          {
-            "id": 6,
-            "customerName": "Hailey Adams",
-            "company": "FlowRush",
-            "orderValue": "$922",
-            "orderDate": "10/06/2023",
-            "status": "completed",
-            "avatar": "/src/img/avt6.png"
-          },
-          {
-            "id": 7,
-            "customerName": "James Smith",
-            "company": "AlphaTech",
-            "orderValue": "$625",
-            "orderDate": "15/07/2023",
-            "status": "new",
-            "avatar": "/src/img/avt5.png"
-          },
-          {
-            "id": 8,
-            "customerName": "Sophia Johnson",
-            "company": "NextGen Corp",
-            "orderValue": "$815",
-            "orderDate": "21/06/2023",
-            "status": "completed",
-            "avatar": "/src/img/avt4.png"
-          },
-          {
-            "id": 9,
-            "customerName": "Michael Williams",
-            "company": "Innovate Ltd",
-            "orderValue": "$432",
-            "orderDate": "30/08/2023",
-            "status": "in-progress",
-            "avatar": "/src/img/avt3.png"
-          },
-          {
-            "id": 10,
-            "customerName": "Emily Brown",
-            "company": "FutureNet",
-            "orderValue": "$987",
-            "orderDate": "12/09/2023",
-            "status": "new",
-            "avatar": "/src/img/avt2.png"
-          },
-          {
-            "id": 11,
-            "customerName": "Matthew Davis",
-            "company": "Smart Solutions",
-            "orderValue": "$543",
-            "orderDate": "05/07/2023",
-            "status": "completed",
-            "avatar": "/src/img/avt.png"
-          },
-          {
-            "id": 12,
-            "customerName": "Olivia Wilson",
-            "company": "CloudSync",
-            "orderValue": "$789",
-            "orderDate": "25/06/2023",
-            "status": "new",
-            "avatar": "/src/img/avt1.png"
-          },
-          {
-            "id": 13,
-            "customerName": "Daniel Martinez",
-            "company": "SoftWorks",
-            "orderValue": "$678",
-            "orderDate": "02/08/2023",
-            "status": "in-progress",
-            "avatar": "/src/img/avt2.png"
-          },
-          {
-            "id": 14,
-            "customerName": "Emma Anderson",
-            "company": "TechNova",
-            "orderValue": "$456",
-            "orderDate": "18/07/2023",
-            "status": "new",
-            "avatar": "/src/img/avt3.png"
-          },
-          {
-            "id": 15,
-            "customerName": "Joshua Thomas",
-            "company": "ByteWave",
-            "orderValue": "$654",
-            "orderDate": "10/09/2023",
-            "status": "completed",
-            "avatar": "/src/img/avt4.png"
-          },
-          {
-            "id": 16,
-            "customerName": "Mia Hernandez",
-            "company": "DataSphere",
-            "orderValue": "$874",
-            "orderDate": "01/06/2023",
-            "status": "completed",
-            "avatar": "/src/img/avt5.png"
-          },
-          {
-            "id": 17,
-            "customerName": "Benjamin White",
-            "company": "CodeHive",
-            "orderValue": "$432",
-            "orderDate": "19/07/2023",
-            "status": "new",
-            "avatar": "/src/img/avt6.png"
-          },
-          {
-            "id": 18,
-            "customerName": "Charlotte Moore",
-            "company": "CyberTech",
-            "orderValue": "$754",
-            "orderDate": "29/08/2023",
-            "status": "in-progress",
-            "avatar": "/src/img/avt5.png"
-          },
-          {
-            "id": 19,
-            "customerName": "William Taylor",
-            "company": "SkyNet",
-            "orderValue": "$349",
-            "orderDate": "15/09/2023",
-            "status": "new",
-            "avatar": "/src/img/avt4.png"
-          },
-          {
-            "id": 20,
-            "customerName": "Samantha King",
-            "company": "NeuralNet",
-            "orderValue": "$582",
-            "orderDate": "05/06/2023",
-            "status": "completed",
-            "avatar": "/src/img/avt3.png"
-          },
-          {
-            "id": 21,
-            "customerName": "Alexander Scott",
-            "company": "AI Systems",
-            "orderValue": "$968",
-            "orderDate": "20/07/2023",
-            "status": "new",
-            "avatar": "/src/img/avt2.png"
-          },
-          {
-            "id": 22,
-            "customerName": "Isabella Lewis",
-            "company": "CloudCom",
-            "orderValue": "$759",
-            "orderDate": "10/08/2023",
-            "status": "in-progress",
-            "avatar": "/src/img/avt.png"
-          },
-          {
-            "id": 23,
-            "customerName": "Ethan Hall",
-            "company": "DigitalCore",
-            "orderValue": "$888",
-            "orderDate": "05/07/2023",
-            "status": "completed",
-            "avatar": "/src/img/avt6.png"
-          },
-          {
-            "id": 24,
-            "customerName": "Ava Allen",
-            "company": "TechFlow",
-            "orderValue": "$659",
-            "orderDate": "11/09/2023",
-            "status": "new",
-            "avatar": "/src/img/avt5.png"
-          },
-          {
-            "id": 25,
-            "customerName": "Mason Young",
-            "company": "DataBridge",
-            "orderValue": "$473",
-            "orderDate": "17/08/2023",
-            "status": "in-progress",
-            "avatar": "/src/img/avt4.png"
-          },
-          {
-            "id": 26,
-            "customerName": "Sophia Carter",
-            "company": "WebInnovate",
-            "orderValue": "$799",
-            "orderDate": "22/06/2023",
-            "status": "completed",
-            "avatar": "/src/img/avt3.png"
-          },
-          {
-            "id": 27,
-            "customerName": "Logan Rivera",
-            "company": "AutoNet",
-            "orderValue": "$412",
-            "orderDate": "15/07/2023",
-            "status": "new",
-            "avatar": "/src/img/avt2.png"
-          },
-          {
-            "id": 28,
-            "customerName": "Harper Nelson",
-            "company": "CloudAI",
-            "orderValue": "$900",
-            "orderDate": "18/09/2023",
-            "status": "completed",
-            "avatar": "/src/img/avt1.png"
-          },
-          {
-            "id": 29,
-            "customerName": "Elizabeth Lee",
-            "company": "AvatarSystems",
-            "orderValue": "$359",
-            "orderDate": "10/07/2023",
-            "status": "new",
-            "avatar": "/src/img/avt.png"
-          },
-          {
-            "id": 30,
-            "customerName": "Carlos Garcia",
-            "company": "SmoozeShift",
-            "orderValue": "$747",
-            "orderDate": "24/07/2023",
-            "status": "new",
-            "avatar": "/src/img/avt6.png"
-          },
-          {
-            "id": 31,
-            "customerName": "Garen Darius",
-            "company": "AutoNet",
-            "orderValue": "$412",
-            "orderDate": "15/07/2023",
-            "status": "new",
-            "avatar": "/src/img/avt2.png"
-          }
-    ]
-  }
-  
+  "customers": [
+    {
+      "id": "1",
+      "customerName": "Elizabeth Lee",
+      "company": "AvatarSystems",
+      "orderValue": "$360",
+      "orderDate": "10/07/2023",
+      "status": "new",
+      "avatar": "/src/img/avt6.png"
+    },
+    {
+      "id": "2",
+      "customerName": "Carlos Garcia",
+      "company": "SmoozeShift",
+      "orderValue": "$747",
+      "orderDate": "24/07/2023",
+      "status": "new",
+      "avatar": "/src/img/avt6.png"
+    },
+    {
+      "id": "3",
+      "customerName": "Elizabeth Bailey",
+      "company": "Prime Time Telecom",
+      "orderValue": "$564",
+      "orderDate": "08/08/2023",
+      "status": "in-progress",
+      "avatar": "/src/img/avt3.png"
+    },
+    {
+      "id": "4",
+      "customerName": "Ryan Brown",
+      "company": "OmniTech Corporation",
+      "orderValue": "$541",
+      "orderDate": "31/08/2023",
+      "status": "in-progress",
+      "avatar": "/src/img/avt2.png"
+    },
+    {
+      "id": "5",
+      "customerName": "Ryan Young",
+      "company": "DataStream Inc.",
+      "orderValue": "$769",
+      "orderDate": "01/05/2023",
+      "status": "completed",
+      "avatar": "/src/img/avt1.png"
+    },
+    {
+      "id": "6",
+      "customerName": "Hailey Adams",
+      "company": "FlowRush",
+      "orderValue": "$922",
+      "orderDate": "10/06/2023",
+      "status": "completed",
+      "avatar": "/src/img/avt6.png"
+    },
+    {
+      "id": "7",
+      "customerName": "James Smith",
+      "company": "AlphaTech",
+      "orderValue": "$625",
+      "orderDate": "15/07/2023",
+      "status": "new",
+      "avatar": "/src/img/avt5.png"
+    },
+    {
+      "id": "8",
+      "customerName": "Sophia Johnson",
+      "company": "NextGen Corp",
+      "orderValue": "$815",
+      "orderDate": "21/06/2023",
+      "status": "completed",
+      "avatar": "/src/img/avt4.png"
+    },
+    {
+      "id": "9",
+      "customerName": "Michael Williams",
+      "company": "Innovate Ltd",
+      "orderValue": "$432",
+      "orderDate": "30/08/2023",
+      "status": "in-progress",
+      "avatar": "/src/img/avt3.png"
+    },
+    {
+      "id": "10",
+      "customerName": "Emily Brown",
+      "company": "FutureNet",
+      "orderValue": "$987",
+      "orderDate": "12/09/2023",
+      "status": "new",
+      "avatar": "/src/img/avt2.png"
+    },
+    {
+      "id": "11",
+      "customerName": "Matthew Davis",
+      "company": "Smart Solutions",
+      "orderValue": "$543",
+      "orderDate": "05/07/2023",
+      "status": "completed",
+      "avatar": "/src/img/avt.png"
+    },
+    {
+      "id": "12",
+      "customerName": "Olivia Wilson",
+      "company": "CloudSync",
+      "orderValue": "$789",
+      "orderDate": "25/06/2023",
+      "status": "new",
+      "avatar": "/src/img/avt1.png"
+    },
+    {
+      "id": "13",
+      "customerName": "Daniel Martinez",
+      "company": "SoftWorks",
+      "orderValue": "$678",
+      "orderDate": "02/08/2023",
+      "status": "in-progress",
+      "avatar": "/src/img/avt2.png"
+    },
+    {
+      "id": "14",
+      "customerName": "Emma Anderson",
+      "company": "TechNova",
+      "orderValue": "$456",
+      "orderDate": "18/07/2023",
+      "status": "new",
+      "avatar": "/src/img/avt3.png"
+    },
+    {
+      "id": "15",
+      "customerName": "Joshua Thomas",
+      "company": "ByteWave",
+      "orderValue": "$654",
+      "orderDate": "10/09/2023",
+      "status": "completed",
+      "avatar": "/src/img/avt4.png"
+    },
+    {
+      "id": "16",
+      "customerName": "Mia Hernandez",
+      "company": "DataSphere",
+      "orderValue": "$874",
+      "orderDate": "01/06/2023",
+      "status": "completed",
+      "avatar": "/src/img/avt5.png"
+    },
+    {
+      "id": "17",
+      "customerName": "Benjamin White",
+      "company": "CodeHive",
+      "orderValue": "$432",
+      "orderDate": "19/07/2023",
+      "status": "new",
+      "avatar": "/src/img/avt6.png"
+    },
+    {
+      "id": "18",
+      "customerName": "Charlotte Moore",
+      "company": "CyberTech",
+      "orderValue": "$754",
+      "orderDate": "29/08/2023",
+      "status": "in-progress",
+      "avatar": "/src/img/avt5.png"
+    },
+    {
+      "id": "19",
+      "customerName": "William Taylor",
+      "company": "SkyNet",
+      "orderValue": "$349",
+      "orderDate": "15/09/2023",
+      "status": "new",
+      "avatar": "/src/img/avt4.png"
+    },
+    {
+      "id": "20",
+      "customerName": "Samantha King",
+      "company": "NeuralNet",
+      "orderValue": "$582",
+      "orderDate": "05/06/2023",
+      "status": "completed",
+      "avatar": "/src/img/avt3.png"
+    },
+    {
+      "id": "21",
+      "customerName": "Alexander Scott",
+      "company": "AI Systems",
+      "orderValue": "$968",
+      "orderDate": "20/07/2023",
+      "status": "new",
+      "avatar": "/src/img/avt2.png"
+    },
+    {
+      "id": "22",
+      "customerName": "Isabella Lewis",
+      "company": "CloudCom",
+      "orderValue": "$759",
+      "orderDate": "10/08/2023",
+      "status": "in-progress",
+      "avatar": "/src/img/avt.png"
+    },
+    {
+      "id": "23",
+      "customerName": "Ethan Hall",
+      "company": "DigitalCore",
+      "orderValue": "$888",
+      "orderDate": "05/07/2023",
+      "status": "completed",
+      "avatar": "/src/img/avt6.png"
+    },
+    {
+      "id": "24",
+      "customerName": "Ava Allen",
+      "company": "TechFlow",
+      "orderValue": "$659",
+      "orderDate": "11/09/2023",
+      "status": "new",
+      "avatar": "/src/img/avt5.png"
+    },
+    {
+      "id": "25",
+      "customerName": "Mason Young",
+      "company": "DataBridge",
+      "orderValue": "$473",
+      "orderDate": "17/08/2023",
+      "status": "in-progress",
+      "avatar": "/src/img/avt4.png"
+    },
+    {
+      "id": "26",
+      "customerName": "Sophia Carter",
+      "company": "WebInnovate",
+      "orderValue": "$799",
+      "orderDate": "22/06/2023",
+      "status": "completed",
+      "avatar": "/src/img/avt3.png"
+    },
+    {
+      "id": "27",
+      "customerName": "Logan Rivera",
+      "company": "AutoNet",
+      "orderValue": "$412",
+      "orderDate": "15/07/2023",
+      "status": "new",
+      "avatar": "/src/img/avt2.png"
+    },
+    {
+      "id": "28",
+      "customerName": "Harper Nelson",
+      "company": "CloudAI",
+      "orderValue": "$900",
+      "orderDate": "18/09/2023",
+      "status": "completed",
+      "avatar": "/src/img/avt1.png"
+    },
+    {
+      "id": "29",
+      "customerName": "Elizabeth Lee",
+      "company": "AvatarSystems",
+      "orderValue": "$359",
+      "orderDate": "10/07/2023",
+      "status": "new",
+      "avatar": "/src/img/avt.png"
+    },
+    {
+      "id": "30",
+      "customerName": "Carlos Garcia",
+      "company": "SmoozeShift",
+      "orderValue": "$747",
+      "orderDate": "24/07/2023",
+      "status": "new",
+      "avatar": "/src/img/avt6.png"
+    },
+    {
+      "id": "31",
+      "customerName": "Garen Darius",
+      "company": "AutoNet",
+      "orderValue": "$412",
+      "orderDate": "15/07/2023",
+      "status": "new",
+      "avatar": "/src/img/avt2.png"
+    },
+    {
+      "id": "32",
+      "customerName": "Elizabeo Sutu",
+      "company": "AutoNet",
+      "orderValue": "$360",
+      "orderDate": "20/03/2023",
+      "status": "new",
+      "avatar": "/src/img/avt.png"
+    }
+  ]
+}

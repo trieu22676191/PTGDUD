@@ -45,6 +45,7 @@ const MenuItem = styled(NavLink)`
     border-color: #ff4081;
     color: #ff4081;
     font-weight: 500;
+    background-color: #fff1f6;
   }
 `;
 
@@ -93,32 +94,50 @@ const Sidebar = () => {
         <img src="/src/img/logo.png" alt="Logo" />
       </Logo>
 
-      <MenuItem to="/dashboard">
+      <MenuItem
+        to="/dashboard"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
         <img src="/src/img/dashboard.png" alt="Dashboard icon" />
         Dashboard
       </MenuItem>
 
-      <MenuItem to="/projects">
+      <MenuItem
+        to="/projects"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
         <img src="/src/img/project.png" alt="Projects icon" />
         Projects
       </MenuItem>
 
-      <MenuItem to="/teams">
+      <MenuItem
+        to="/teams"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
         <img src="/src/img/team.png" alt="Teams icon" />
         Teams
       </MenuItem>
 
-      <MenuItem to="/analytics">
+      <MenuItem
+        to="/analytics"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
         <img src="/src/img/analytic.png" alt="Analytics icon" />
         Analytics
       </MenuItem>
 
-      <MenuItem to="/messages">
+      <MenuItem
+        to="/messages"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
         <img src="/src/img/chat.png" alt="Messages icon" />
         Messages
       </MenuItem>
 
-      <MenuItem to="/integrations">
+      <MenuItem
+        to="/integrations"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
         <img src="/src/img/code.png" alt="Integrations icon" />
         Integrations
       </MenuItem>

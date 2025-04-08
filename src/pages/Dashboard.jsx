@@ -14,7 +14,10 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { Message } from "primereact/message";
+import { Button } from "primereact/button";
 import Overview from "../components/Overview";
+import EditModal from "../components/EditModal";
+import AddModal from "../components/AddModal";
 
 const DashboardContainer = styled.div`
   padding: 1rem;
@@ -57,7 +60,7 @@ const ButtonGroup = styled.div`
   gap: 0.75rem;
 `;
 
-const Button = styled.button`
+const StyledButton = styled.button`
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-size: 0.875rem;
@@ -140,10 +143,36 @@ const PaginatorLeft = styled.div`
   margin-left: 0;
 `;
 
+const ActionButton = styled(Button)`
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #ff4081;
+  }
+`;
+
+const AddButton = styled(Button)`
+  background-color: #22c55e;
+  border: none;
+  margin-right: 1rem;
+
+  &:hover {
+    background-color: #16a34a !important;
+  }
+`;
+
 const Dashboard = () => {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [editModalVisible, setEditModalVisible] = useState(false);
+  const [addModalVisible, setAddModalVisible] = useState(false);
 
   useEffect(() => {
     fetchCustomers();
@@ -167,6 +196,23 @@ const Dashboard = () => {
     }
   };
 
+  const handleEdit = (customer) => {
+    setSelectedCustomer(customer);
+    setEditModalVisible(true);
+  };
+
+  const handleAdd = (newCustomer) => {
+    setCustomers((prevCustomers) => [...prevCustomers, newCustomer]);
+  };
+
+  const handleSave = (updatedCustomer) => {
+    setCustomers((prevCustomers) =>
+      prevCustomers.map((customer) =>
+        customer.id === updatedCustomer.id ? updatedCustomer : customer
+      )
+    );
+  };
+
   const statusBodyTemplate = (rowData) => {
     return <StatusBadge status={rowData.status}>{rowData.status}</StatusBadge>;
   };
@@ -177,6 +223,17 @@ const Dashboard = () => {
         <Avatar src={rowData.avatar} alt={rowData.customerName} />
         {rowData.customerName}
       </CustomerCell>
+    );
+  };
+
+  const actionBodyTemplate = (rowData) => {
+    return (
+      <ActionButton
+        icon="pi pi-pencil"
+        onClick={() => handleEdit(rowData)}
+        tooltip="Chỉnh sửa"
+        tooltipOptions={{ position: "top" }}
+      />
     );
   };
 
@@ -207,14 +264,19 @@ const Dashboard = () => {
       <ReportHeader>
         <Title>Detailed report</Title>
         <ButtonGroup>
-          <Button color="#ff4081" hoverBg="#fff1f6">
+          <AddButton
+            label="Add User"
+            icon="pi pi-user-plus"
+            onClick={() => setAddModalVisible(true)}
+          />
+          <StyledButton color="#ff4081" hoverBg="#fff1f6">
             <HiUpload />
             Import
-          </Button>
-          <Button color="#0ea5e9" hoverBg="#f0f9ff">
+          </StyledButton>
+          <StyledButton color="#0ea5e9" hoverBg="#f0f9ff">
             <HiDownload />
             Export
-          </Button>
+          </StyledButton>
         </ButtonGroup>
       </ReportHeader>
 
@@ -269,8 +331,25 @@ const Dashboard = () => {
           sortable
           style={{ minWidth: "8rem" }}
         />
-        <Column headerStyle={{ width: "5rem" }} />
+        <Column
+          header="ACTIONS"
+          body={actionBodyTemplate}
+          style={{ minWidth: "5rem" }}
+        />
       </DataTable>
+
+      <EditModal
+        visible={editModalVisible}
+        onHide={() => setEditModalVisible(false)}
+        customer={selectedCustomer}
+        onSave={handleSave}
+      />
+
+      <AddModal
+        visible={addModalVisible}
+        onHide={() => setAddModalVisible(false)}
+        onAdd={handleAdd}
+      />
     </DashboardContainer>
   );
 };
